@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ethereum-node
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ethereum-node
+  template:
+    metadata:
+      labels:
+        app: ethereum-node
+    spec:
+      containers:
+        - name: ethereum-node
+          image: ethereum-node:latest
+          ports:
+            - containerPort: 8545
+            - containerPort: 30303
